@@ -1,99 +1,139 @@
 "use client"
 import React, { useState } from 'react';
-
-// Define the shape of a navigation item
-interface NavItem {
-  label: string;
-  href: string;
-}
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const navItems: NavItem[] = [
-    { label: 'Marketplace', href: '#' },
-    { label: 'Discover Research', href: '#' },
-    { label: 'Document', href: '#' },
-    { label: 'About', href: '#' },
+  const links = [
+    { name: 'Marketplace', href: '#' },
+    { name: 'Discover Research', href: '#' },
+    { name: 'Document', href: '#' },
+    { name: 'About', href: '#' },
   ];
 
+  // Animation Variants
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut",
+        when: "afterChildren" // Wait for children to hide before closing container
+      }
+    },
+    open: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        when: "beforeChildren", // Open container, then show children
+        staggerChildren: 0.1 // 0.1s delay between each link appearing
+      }
+    }
+  };
+
+  const itemVariants = {
+    closed: { opacity: 0, x: 20 }, // Slide out to the right
+    open: { opacity: 1, x: 0 }     // Slide in from the right
+  };
+
   return (
-    <nav className="w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <>
+      <nav className="fixed tracking-tighter top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md text-white">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           
-          {/* 1. Logo Section (Text Only) */}
-          <div className="flex-shrink-0 cursor-pointer select-none">
-            <span className="text-2xl font-bold tracking-tight">
-              {/* Using text color to mimic the logo icon */}
-              <span className="text-orange-500 mr-1">O</span>
-              openQuanta
-            </span>
+          {/* 1. LOGO */}
+          <div className="z-10 flex-shrink-0 cursor-pointer text-xl font-bold tracking-tight">
+            <Image
+              src="/icons/oQWhite.svg"
+              alt="openQuanta Logo"
+              width={120}
+              height={40}
+              priority
+            />
           </div>
 
-          {/* 2. Desktop Navigation Links (Hidden on Mobile) */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+          {/* 2. DESKTOP NAV */}
+          <div className="hidden absolute left-1/2 -translate-x-1/2 md:flex items-center gap-8">
+            {links.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-gray-300 transition-colors hover:text-white"
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
 
-          {/* 3. Desktop Sign In (Hidden on Mobile) */}
-          <div className="hidden md:block">
-            <a href="#" className="text-white hover:text-gray-300 px-4 py-2 text-sm font-medium transition-colors">
+          {/* 3. RIGHT SECTION */}
+          <div className="z-10 flex items-center gap-4">
+            <a
+              href="#"
+              className="hidden text-sm font-medium text-white transition-opacity hover:opacity-80 md:block"
+            >
               Sign In
             </a>
-          </div>
 
-          {/* 4. Mobile Menu Toggle (Text Based) */}
-          <div className="md:hidden">
+            {/* Mobile Toggle Button */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white p-2 focus:outline-none"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-xs font-medium tracking-widest text-gray-300 md:hidden border border-gray-700 rounded-full px-3 py-1 hover:bg-white/10 hover:text-white transition"
             >
-              <span className="text-sm font-bold border rounded-4xl px-4 py-1">
-                {isMenuOpen ? 'Close' : 'Menu'}
-              </span>
+              <motion.span
+                // Simple animation for the text changing
+                key={isOpen ? "close" : "menu"}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isOpen ? 'Close' : 'Menu'}
+              </motion.span>
             </button>
           </div>
         </div>
-      </div>
 
-      {/* 5. Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-gray-300 hover:text-white hover:bg-gray-900 block px-3 py-2 rounded-md text-base font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
-            
-            {/* Mobile Sign In */}
-            <div className="mt-4 pt-4">
-              <a
+        {/* 4. MOBILE MENU WITH ANIMATION */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+              className="flex flex-col items-end space-y-4 border-b border-white/10 bg-black px-6 pb-6 pt-2 md:hidden overflow-hidden"
+            >
+              {links.map((link) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  variants={itemVariants}
+                  className="text-lg font-medium text-gray-300 hover:text-white"
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+              
+              {/* Sign In Link Animation */}
+              <motion.a
                 href="#"
-                className="text-whiteblock px-3 py-2 rounded-md text-base font-medium text-center"
+                variants={itemVariants}
+                className="mt-4 border-t border-white/10 pt-4 text-lg font-bold text-white w-full text-right"
               >
                 Sign In
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
+              </motion.a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+      
+      {/* Spacer */}
+      <div className="h-20" />
+    </>
   );
 };
 
