@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,32 +15,32 @@ const Navbar: React.FC = () => {
   ];
 
   // Animation Variants
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        when: "afterChildren" // Wait for children to hide before closing container
-      }
-    },
-    open: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-        when: "beforeChildren", // Open container, then show children
-        staggerChildren: 0.1 // 0.1s delay between each link appearing
-      }
+const menuVariants: Variants = {
+  closed: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut",
+      when: "afterChildren"
     }
-  };
+  },
+  open: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.1
+    }
+  }
+};
 
-  const itemVariants = {
-    closed: { opacity: 0, x: 20 }, // Slide out to the right
-    open: { opacity: 1, x: 0 }     // Slide in from the right
-  };
+const itemVariants: Variants = {
+  closed: { opacity: 0, x: 20 },
+  open: { opacity: 1, x: 0 }
+};
 
   return (
     <>
@@ -47,7 +48,7 @@ const Navbar: React.FC = () => {
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           
           {/* 1. LOGO */}
-          <div className="z-10 flex-shrink-0 cursor-pointer text-xl font-bold tracking-tight">
+          <div className="z-10 shrink-0 cursor-pointer text-xl font-bold tracking-tight">
             <Image
               src="/icons/oQWhite.svg"
               alt="openQuanta Logo"
