@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   // 1. Added a 'badge' property to the Marketplace object
   const links = [
     { name: 'Marketplace', href: '#', badge: 'Coming Soon' }, 
-    { name: 'Blog Page', href: '#' },
+    { name: 'Blog Page', href: '/blog' },
     { name: 'Document', href: '#' },
     { name: 'About', href: '/about' },
   ];

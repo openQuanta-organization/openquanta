@@ -6,6 +6,7 @@ import { Sparkles, ChevronRight, Play } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Features from "./components/Features";
+import Testimonials from "./components/Testimonials";
 
 const Hero = () => {
   return (
@@ -119,7 +120,9 @@ const Hero = () => {
       
       {/* Bottom Gradient Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+  
         <Features />
+        <Testimonials />
         <Footer />
     </section>
   
