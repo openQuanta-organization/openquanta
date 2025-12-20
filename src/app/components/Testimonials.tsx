@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo, memo } from "react";
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 
@@ -85,9 +85,10 @@ const Testimonials = () => {
 
           <motion.div 
             className="flex gap-8 w-max px-8"
-            animate={{ x: ["0%", "-50%"] }}
+            style={{ willChange: "transform" }}
+            animate={{ x: -scrollData.length * 200 }}
             transition={{ 
-              duration: 40, // Adjust speed (higher = slower)
+              duration: 40,
               ease: "linear", 
               repeat: Infinity 
             }}
@@ -106,7 +107,9 @@ const Testimonials = () => {
 };
 
 // --- CARD COMPONENT ---
-const TestimonialCard = ({ data }: { data: any }) => {
+const TestimonialCard = memo(({ data }: { data: any }) => {
+  const starArray = useMemo(() => [...Array(5)], []);
+
   return (
     <div className="group relative h-full">
       {/* Glass Container - Removed hover border change */}
@@ -143,7 +146,7 @@ const TestimonialCard = ({ data }: { data: any }) => {
           </div>
           
           <div className="ml-auto flex gap-0.5">
-            {[...Array(5)].map((_, i) => (
+            {starArray.map((_, i) => (
               <Star key={i} className="w-3 h-3 text-orange-500/80 fill-orange-500/80" />
             ))}
           </div>
@@ -152,6 +155,8 @@ const TestimonialCard = ({ data }: { data: any }) => {
       </div>
     </div>
   );
-};
+});
+
+TestimonialCard.displayName = "TestimonialCard";
 
 export default Testimonials;
