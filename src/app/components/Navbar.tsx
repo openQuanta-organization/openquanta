@@ -70,10 +70,10 @@ const Navbar: React.FC = () => {
             href="/"
             className="z-10 shrink-0 cursor-pointer text-xl font-bold tracking-tight">
             <Image
-              src="/images/oqwhite.svg"
+              src="/images/openquantalogo.svg"
               alt="openQuanta logo"
-              width={120}
-              height={40}
+              width={130}
+              height={50}
               priority
             />
           </a>

@@ -23,10 +23,10 @@ const mobileScrollData = [...logos, ...logos];
 
 const LogosSlider = () => {
   return (
-    <section className="relative w-full py-20 md:py-32 bg-black text-white overflow-hidden border-y border-white/5">
+    <section className="relative w-full py-20 md:py-32 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
             {/* --- DESKTOP VIEW: STATIC GRID (Hidden on mobile) --- */}
-        <div className="hidden md:grid grid-cols-5 gap-x-12 gap-y-20 items-center justify-items-center">
+        <div className="hidden md:grid grid-cols-5 gap-x-8 gap-y-12 items-center justify-items-center">
           {logos.map((logo) => (
             <div key={logo.id} className="w-full flex justify-center group">
                <div className="relative h-8 w-40 transition-all duration-300 opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 flex items-center justify-center"> 

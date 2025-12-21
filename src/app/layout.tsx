@@ -12,6 +12,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "openQuanta",
   description: "Publish your research on-chain, create authorship NFT with metadata, earn recognition without gatekeepers, and join a global community redefining publishing collaboration.",
+  icons: {
+    icon: "/icons/siteicon.svg",
+  },
 };
 
 export default function RootLayout({
