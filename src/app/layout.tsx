@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${halenoir.className} ${halenoir.variable} antialiased tracking-tighter`}>
+      <body id="top" className={`${halenoir.className} ${halenoir.variable} antialiased tracking-tighter`}>
         <SnowfallEffect />
         {children}
       </body>

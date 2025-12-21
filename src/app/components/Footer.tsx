@@ -134,14 +134,14 @@ const Footer = () => {
           <span>All browser support</span>
         </div>
 
-        {/* Scroll To Top Button */}
-        <button
-          onClick={scrollToTop}
+        {/* Scroll To Top Anchor (server-friendly) */}
+        <a
+          href="#top"
           className="bg-[#1A1A1A] hover:bg-[#252525] p-3 rounded-full text-gray-400 transition-all border border-white/5"
           aria-label="Scroll to top"
         >
           <ArrowUp size={16} />
-        </button>
+        </a>
       </div>
     </footer>
   );

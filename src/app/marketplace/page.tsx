@@ -100,7 +100,8 @@ const MarketplacePage = () => {
           className="mt-20 w-full max-w-6xl relative"
         >
           {/* The "Glass" Overlay that blurs the content below */}
-          <div className="absolute inset-0 z-20 bg-gradient-to-t from-black via-black/80 to-transparent backdrop-blur-[2px] flex items-end justify-center pb-10">
+          {/* UPDATED FOR A MORE GLASSY LOOK */}
+          <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/20 via-black/10 to-transparent backdrop-blur-xl border-t border-white/5 flex items-end justify-center pb-10">
             <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/80 border border-white/10 backdrop-blur-md shadow-2xl">
               <Lock className="w-4 h-4 text-gray-400" />
               <span className="text-sm font-medium text-gray-300">Preview locked until launch</span>
@@ -108,7 +109,7 @@ const MarketplacePage = () => {
           </div>
 
           {/* Fake Interface (Blurred out) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-30 select-none pointer-events-none transform scale-95 origin-top">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-50 select-none pointer-events-none transform scale-95 origin-top">
             {[1, 2, 3].map((i) => (
               <div key={i} className="h-80 rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col gap-4">
                 <div className="h-40 w-full bg-white/5 rounded-xl animate-pulse" />
