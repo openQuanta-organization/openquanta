@@ -10,7 +10,7 @@ const logos = [
   { id: 2, name: "Visa", src: "/icons/visa.svg" },
   { id: 3, name: "Ness", src: "/icons/ness.svg" },
   { id: 4, name: "Unqork", src: "/icons/unqork.svg" },
-  { id: 5, name: "Superteam", src: "/icons/superteam.svg" }, // Renamed for clarity
+  { id: 5, name: "Superteam", src: "/icons/superteam.svg" },
   { id: 6, name: "Stitch", src: "/icons/stitch.svg" },
   { id: 7, name: "Solana", src: "/icons/solana.svg" },
   { id: 8, name: "Vital", src: "/icons/vital.svg" },
@@ -29,14 +29,12 @@ const LogosSlider = () => {
         <div className="hidden md:grid grid-cols-5 gap-x-12 gap-y-20 items-center justify-items-center">
           {logos.map((logo) => (
             <div key={logo.id} className="w-full flex justify-center group">
-               {/* INCREASED SIZE HERE: 
-                  h-12 (48px height) and w-40 (160px width) allow logos to breathe 
-               */}
-               <div className="relative h-12 w-40 transition-all duration-300 opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0"> 
+               <div className="relative h-8 w-40 transition-all duration-300 opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 flex items-center justify-center"> 
                   <Image
                     src={logo.src}
                     alt={logo.name}
-                    fill
+                    width={120}
+                    height={20}
                     className="object-contain"
                   />
                </div>
@@ -52,20 +50,21 @@ const LogosSlider = () => {
 
           <motion.div 
             className="flex gap-16 w-max items-center"
-            animate={{ x: ["0%", "-50%"] }}
+            style={{ willChange: "transform" }}
+            animate={{ x: -(logos.length * 128) }}
             transition={{ 
-              duration: 25, 
+              duration: 30, 
               ease: "linear", 
               repeat: Infinity 
             }}
           >
             {mobileScrollData.map((logo, index) => (
-              // Increased mobile size slightly as well (h-10 w-32)
-              <div key={`${logo.id}-mobile-${index}`} className="relative h-10 w-32 flex-shrink-0 opacity-80">
+              <div key={`${logo.id}-mobile-${index}`} className="relative h-10 w-32 flex-shrink-0 opacity-80 flex items-center justify-center">
                  <Image
                     src={logo.src}
                     alt={logo.name}
-                    fill
+                    width={128}
+                    height={40}
                     className="object-contain"
                   />
               </div>
