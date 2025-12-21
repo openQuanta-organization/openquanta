@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import SnowfallEffect from "./components/snowfall";
 
 const halenoir = localFont({
   src: [
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${halenoir.className} ${halenoir.variable} antialiased tracking-tighter`}>
+        <SnowfallEffect />
         {children}
       </body>
     </html>
