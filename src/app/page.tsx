@@ -1,12 +1,11 @@
 "use client";
-
-import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, ChevronRight, Play } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
+import LogosSlider from "./components/LogosSlider";
 
 const Hero = () => {
   return (
@@ -17,8 +16,13 @@ const Hero = () => {
       {/* "relative" and "overflow-hidden" ensure the background stays contained HERE */}
       <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden">
         
+        {/* --- NEW: SUBTLE GRID OVERLAY --- */}
+        {/* This creates the grid lines using CSS gradients and masks them radially to fade out at edges */}
+        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] z-0"></div>
+
+
         {/* --- BACKGROUND ANIMATION (Scoped to this section only) --- */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           {/* Purple Blob */}
           <motion.div
             animate={{
@@ -105,7 +109,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="relative w-full max-w-5xl mt-12 md:mt-20 aspect-video border border-white/10 bg-white/5 shadow-2xl overflow-hidden group"
+            className="relative w-full max-w-5xl mt-12 md:mt-20 aspect-video border border-white/10 bg-white/5 shadow-2xl overflow-hidden group rounded-xl"
           >
             {/* Inner Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -123,9 +127,9 @@ const Hero = () => {
         </div>
 
         {/* Bottom Gradient Fade for Hero Section */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
       </section>
-
+            <LogosSlider />
       {/* --- REST OF PAGE CONTENT (Outside the relative hero wrapper) --- */}
       {/* These will now have a clean black background */}
       <Features />
