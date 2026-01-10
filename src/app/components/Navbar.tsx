@@ -9,9 +9,9 @@ const Navbar: React.FC = () => {
 
   // 1. Added a 'badge' property to the Marketplace object
   const links = [
-    { name: 'Marketplace', href: '/marketplace', badge: 'Coming Soon' }, 
+    { name: 'Marketplace', href: '/marketplace', badge: 'Coming Soon' },
     { name: 'Blogs', href: '/blog' },
-    { name: 'Document', href: '#' },
+    { name: 'Docs', href: '#' },
     { name: 'About', href: '/about' },
   ];
 
@@ -64,9 +64,9 @@ const Navbar: React.FC = () => {
     <>
       <nav className="fixed tracking-tighter top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md text-white">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          
+
           {/* 1. LOGO */}
-          <a 
+          <a
             href="/"
             className="z-10 shrink-0 cursor-pointer text-xl font-bold tracking-tight">
             <Image
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                 className="group flex items-center gap-2 text-sm font-medium text-gray-300 transition-colors hover:text-white"
               >
                 {link.name}
-                
+
                 {/* Badge Render Logic */}
                 {link.badge && (
                   <span className="inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-purple-300">
@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
                   {link.name}
                 </motion.a>
               ))}
-              
+
               {/* Sign In Link Animation */}
               <motion.a
                 href="#"
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
           )}
         </AnimatePresence>
       </nav>
-      
+
       {/* Spacer */}
       <div className="h-20" />
     </>
