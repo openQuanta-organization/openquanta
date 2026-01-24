@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
 const BuildingBlocks = () => {
-    // State to track which card is open. Defaulting to 0 (first card) to match your screenshot.
+    // State to track which card is open. 
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const toggleIndex = (index: number) => {
@@ -104,7 +104,7 @@ const BuildingBlocks = () => {
                                     </p>
                                 </div>
 
-                                {/* Animated "Our Approach" Section */}
+                                {/*Approach Section */}
                                 <AnimatePresence>
                                     {isOpen && (
                                         <motion.div
