@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Mail, MessageSquare, MapPin, Send, ArrowRight, Twitter, Linkedin } from "lucide-react";
 
 const ContactPage = () => {
-  // Simple state for form handling (visual only for now)
+  // Simple state for form handling (visual only for now) - not implemented
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -21,7 +21,7 @@ const ContactPage = () => {
     <div className="relative w-full min-h-screen bg-black text-white selection:bg-purple-500/30">
       <Navbar />
 
-      {/* --- HERO BACKGROUND ANIMATION (Absolute top only) --- */}
+      {/*hero background animation*/}
       <div className="absolute top-0 left-0 w-full h-[80vh] pointer-events-none z-0 overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2], x: [0, 50, 0] }}
@@ -38,7 +38,7 @@ const ContactPage = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
         
-        {/* --- HEADER --- */}
+        {/*header*/}
         <div className="text-center mb-20">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -60,10 +60,10 @@ const ContactPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           
-          {/* --- LEFT COLUMN: CONTACT INFO --- */}
+          {/*contact info*/}
           <div className="lg:col-span-5 space-y-8">
             
-            {/* Info Card 1: General Support */}
+            {/*General Support */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -82,7 +82,7 @@ const ContactPage = () => {
               </a>
             </motion.div>
 
-            {/* Info Card 2: Community */}
+            {/*Community*/}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -97,10 +97,10 @@ const ContactPage = () => {
                 Connect with researchers and developers on our Discord server.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
+                {/* <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
                    {/* Discord Icon (using MessageSquare as placeholder or import dedicated icon) */}
                    <MessageSquare className="w-5 h-5 text-gray-300" />
-                </a>
+                </a> */}
                 <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
                    <Twitter className="w-5 h-5 text-gray-300" />
                 </a>
@@ -112,7 +112,7 @@ const ContactPage = () => {
 
           </div>
 
-          {/* --- RIGHT COLUMN: CONTACT FORM --- */}
+          {/*contact form*/}
           <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -128,7 +128,7 @@ const ContactPage = () => {
                     <label className="text-xs font-bold uppercase tracking-widest text-gray-500 ml-1">Name</label>
                     <input 
                       type="text" 
-                      placeholder="John Doe"
+                      placeholder="Emeka Victor"
                       className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:bg-black/60 transition-all"
                       required 
                     />
@@ -137,7 +137,7 @@ const ContactPage = () => {
                     <label className="text-xs font-bold uppercase tracking-widest text-gray-500 ml-1">Email</label>
                     <input 
                       type="email" 
-                      placeholder="john@example.com"
+                      placeholder="emeka@mail.com"
                       className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:bg-black/60 transition-all" 
                       required
                     />
