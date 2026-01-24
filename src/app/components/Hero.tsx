@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Play } from "lucide-react";
 
-// --- HELPER COMPONENT: QUANTUM BEAM ---
+// helper component
 const GridBeam = ({ left, delay, duration, color }: { left: string, delay: number, duration: number, color: string }) => (
     <motion.div
         initial={{ top: "-20%", opacity: 0 }}
