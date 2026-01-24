@@ -3,8 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-// DATA: Ensure these file names match your 'public/icons' folder exactly
 const logos = [
   { id: 1, name: "Sorare", src: "/icons/sorare.svg" },
   { id: 2, name: "Visa", src: "/icons/visa.svg" },
@@ -18,7 +16,6 @@ const logos = [
   { id: 10, name: "Humaans", src: "/icons/humaans.svg" },
 ];
 
-// Duplicate data for seamless mobile loop
 const mobileScrollData = [...logos, ...logos];
 
 const LogosSlider = () => {
@@ -47,7 +44,7 @@ const LogosSlider = () => {
             Our Partners
           </h3>
         </div>
-        {/* --- MOBILE VIEW: INFINITE SLIDER (now visible on desktop) --- */}
+
         <div className="relative w-full overflow-hidden py-4">
           {/* Gradients for smooth fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 z-20 bg-gradient-to-r from-black to-transparent pointer-events-none" />
