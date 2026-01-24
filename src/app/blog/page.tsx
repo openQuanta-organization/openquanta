@@ -46,7 +46,7 @@ const BlogPage = () => {
     <div className="relative w-full min-h-screen bg-black text-white selection:bg-purple-500/30">
       <Navbar />
 
-      {/* --- HERO BACKGROUND ANIMATION (Absolute top only) --- */}
+      {/*hero background animation*/}
       <div className="absolute top-0 left-0 w-full h-[80vh] pointer-events-none z-0 overflow-hidden">
         {/* Purple Blob */}
         <motion.div
@@ -67,7 +67,7 @@ const BlogPage = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
         
-        {/* --- HEADER --- */}
+        {/*header*/}
         <div className="mb-24 text-center max-w-2xl mx-auto">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -86,7 +86,7 @@ const BlogPage = () => {
           </motion.p>
         </div>
 
-        {/* --- BLOG GRID --- */}
+        {/*blog grid*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <BlogCard key={post.id} post={post} index={index} />
@@ -98,7 +98,5 @@ const BlogPage = () => {
     </div>
   );
 };
-
-// Card component has been extracted to `src/app/components/Blogcard.tsx`
 
 export default BlogPage;
