@@ -54,7 +54,7 @@ const BuildingBlocks = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl md:text-7xl text-white max-w-3xl tracking-tighter leading-[1.1]"
+                            className="text-5xl md:text-6xl text-white max-w-3xl tracking-tighter leading-[1.1]"
                         >
                             Building Blocks For Open Science
                         </motion.h2>
