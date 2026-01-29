@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <section className="relative w-full bg-black text-white py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
+    <section className="relative w-full bg-black text-white py-24 px-6 md:px-12 lg:px-16 overflow-hidden ">
       
       {/* Background animation */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
